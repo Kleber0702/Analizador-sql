@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado del análisis</title>
+</head>
+<body>
+    <h1>Resultado del análisis</h1>
+    
+    <h2>Tokens:</h2>
+    <ul>
+        {% for token in tokens %}
+            <li>{{ token }}</li>
+        {% endfor %}
+    </ul>
+    
+    {% if errores %}
+    <h1>Errores léxicos encontrados:</h1>
+    <ul>
+        {% for error in errores %}
+            <li>{{ error }}</li>
+        {% endfor %}    
+    </ul>
+    {% else %}
+    <h1>Sin errores léxicos</h1>
+    {% endif %}
+
+    <h2>{{ mensaje }}</h2>
+    
+    {% if resultados %}
+    <h2>Resultados de la consulta:</h2>
+    <table border="1">
+        {% for resultado in resultados %}
+        <tr>
+            {% for value in resultado %}
+            <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>

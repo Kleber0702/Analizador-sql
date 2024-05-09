@@ -1,0 +1,1092 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    PRIMARY
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> create_db_statement
+Rule 2     statement -> use_db_statement
+Rule 3     statement -> create_table_statement
+Rule 4     statement -> empty
+Rule 5     statement -> insert_statement
+Rule 6     statement -> update_statement
+Rule 7     statement -> delete_statement
+Rule 8     statement -> select_statement
+Rule 9     create_db_statement -> CREATE DATABASE IF NOT EXISTS ID SEMICOLON
+Rule 10    create_db_statement -> CREATE DATABASE ID SEMICOLON
+Rule 11    use_db_statement -> USE ID SEMICOLON
+Rule 12    create_table_statement -> CREATE TABLE IF NOT EXISTS ID LPAREN column_definitions RPAREN SEMICOLON
+Rule 13    create_table_statement -> CREATE TABLE ID LPAREN column_definitions RPAREN SEMICOLON
+Rule 14    column_definitions -> column_definition
+Rule 15    column_definitions -> column_definitions COMMA column_definition
+Rule 16    column_definition -> ID data_type column_constraints
+Rule 17    data_type -> INT
+Rule 18    data_type -> VARCHAR LPAREN NUMBER RPAREN
+Rule 19    data_type -> DECIMAL LPAREN NUMBER COMMA NUMBER RPAREN
+Rule 20    column_constraints -> AUTO_INCREMENT
+Rule 21    column_constraints -> PRIMARY_KEY
+Rule 22    column_constraints -> FOREIGN_KEY LPAREN ID RPAREN REFERENCES ID LPAREN ID RPAREN
+Rule 23    empty -> <empty>
+Rule 24    select_statement -> SELECT ASTERISK FROM ID SEMICOLON
+Rule 25    insert_statement -> INSERT INTO ID LPAREN id_list RPAREN VALUES LPAREN value_list RPAREN SEMICOLON
+Rule 26    update_statement -> UPDATE ID SET assignment_list WHERE condition SEMICOLON
+Rule 27    delete_statement -> DELETE FROM ID WHERE condition SEMICOLON
+Rule 28    id_list -> ID
+Rule 29    id_list -> id_list COMMA ID
+Rule 30    value_list -> value
+Rule 31    value_list -> value_list COMMA value
+Rule 32    value -> NUMBER
+Rule 33    value -> STRING
+Rule 34    assignment_list -> assignment
+Rule 35    assignment_list -> assignment_list COMMA assignment
+Rule 36    assignment -> ID = value
+Rule 37    condition -> ID = value
+Rule 38    condition -> condition AND_KEYWORD condition
+Rule 39    condition -> condition OR_KEYWORD condition
+
+Terminals, with rules where they appear
+
+=                    : 36 37
+AND_KEYWORD          : 38
+ASTERISK             : 24
+AUTO_INCREMENT       : 20
+COMMA                : 15 19 29 31 35
+CREATE               : 9 10 12 13
+DATABASE             : 9 10
+DECIMAL              : 19
+DELETE               : 27
+EXISTS               : 9 12
+FOREIGN_KEY          : 22
+FROM                 : 24 27
+ID                   : 9 10 11 12 13 16 22 22 22 24 25 26 27 28 29 36 37
+IF                   : 9 12
+INSERT               : 25
+INT                  : 17
+INTO                 : 25
+LPAREN               : 12 13 18 19 22 22 25 25
+NOT                  : 9 12
+NUMBER               : 18 19 19 32
+OR_KEYWORD           : 39
+PRIMARY              : 
+PRIMARY_KEY          : 21
+REFERENCES           : 22
+RPAREN               : 12 13 18 19 22 22 25 25
+SELECT               : 24
+SEMICOLON            : 9 10 11 12 13 24 25 26 27
+SET                  : 26
+STRING               : 33
+TABLE                : 12 13
+UPDATE               : 26
+USE                  : 11
+VALUES               : 25
+VARCHAR              : 18
+WHERE                : 26 27
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment           : 34 35
+assignment_list      : 26 35
+column_constraints   : 16
+column_definition    : 14 15
+column_definitions   : 12 13 15
+condition            : 26 27 38 38 39 39
+create_db_statement  : 1
+create_table_statement : 3
+data_type            : 16
+delete_statement     : 7
+empty                : 4
+id_list              : 25 29
+insert_statement     : 5
+select_statement     : 8
+statement            : 0
+update_statement     : 6
+use_db_statement     : 2
+value                : 30 31 36 37
+value_list           : 25 31
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . create_db_statement
+    (2) statement -> . use_db_statement
+    (3) statement -> . create_table_statement
+    (4) statement -> . empty
+    (5) statement -> . insert_statement
+    (6) statement -> . update_statement
+    (7) statement -> . delete_statement
+    (8) statement -> . select_statement
+    (9) create_db_statement -> . CREATE DATABASE IF NOT EXISTS ID SEMICOLON
+    (10) create_db_statement -> . CREATE DATABASE ID SEMICOLON
+    (11) use_db_statement -> . USE ID SEMICOLON
+    (12) create_table_statement -> . CREATE TABLE IF NOT EXISTS ID LPAREN column_definitions RPAREN SEMICOLON
+    (13) create_table_statement -> . CREATE TABLE ID LPAREN column_definitions RPAREN SEMICOLON
+    (23) empty -> .
+    (25) insert_statement -> . INSERT INTO ID LPAREN id_list RPAREN VALUES LPAREN value_list RPAREN SEMICOLON
+    (26) update_statement -> . UPDATE ID SET assignment_list WHERE condition SEMICOLON
+    (27) delete_statement -> . DELETE FROM ID WHERE condition SEMICOLON
+    (24) select_statement -> . SELECT ASTERISK FROM ID SEMICOLON
+
+    CREATE          shift and go to state 10
+    USE             shift and go to state 11
+    $end            reduce using rule 23 (empty -> .)
+    INSERT          shift and go to state 12
+    UPDATE          shift and go to state 13
+    DELETE          shift and go to state 14
+    SELECT          shift and go to state 15
+
+    statement                      shift and go to state 1
+    create_db_statement            shift and go to state 2
+    use_db_statement               shift and go to state 3
+    create_table_statement         shift and go to state 4
+    empty                          shift and go to state 5
+    insert_statement               shift and go to state 6
+    update_statement               shift and go to state 7
+    delete_statement               shift and go to state 8
+    select_statement               shift and go to state 9
+
+state 1
+
+    (0) S' -> statement .
+
+
+
+state 2
+
+    (1) statement -> create_db_statement .
+
+    $end            reduce using rule 1 (statement -> create_db_statement .)
+
+
+state 3
+
+    (2) statement -> use_db_statement .
+
+    $end            reduce using rule 2 (statement -> use_db_statement .)
+
+
+state 4
+
+    (3) statement -> create_table_statement .
+
+    $end            reduce using rule 3 (statement -> create_table_statement .)
+
+
+state 5
+
+    (4) statement -> empty .
+
+    $end            reduce using rule 4 (statement -> empty .)
+
+
+state 6
+
+    (5) statement -> insert_statement .
+
+    $end            reduce using rule 5 (statement -> insert_statement .)
+
+
+state 7
+
+    (6) statement -> update_statement .
+
+    $end            reduce using rule 6 (statement -> update_statement .)
+
+
+state 8
+
+    (7) statement -> delete_statement .
+
+    $end            reduce using rule 7 (statement -> delete_statement .)
+
+
+state 9
+
+    (8) statement -> select_statement .
+
+    $end            reduce using rule 8 (statement -> select_statement .)
+
+
+state 10
+
+    (9) create_db_statement -> CREATE . DATABASE IF NOT EXISTS ID SEMICOLON
+    (10) create_db_statement -> CREATE . DATABASE ID SEMICOLON
+    (12) create_table_statement -> CREATE . TABLE IF NOT EXISTS ID LPAREN column_definitions RPAREN SEMICOLON
+    (13) create_table_statement -> CREATE . TABLE ID LPAREN column_definitions RPAREN SEMICOLON
+
+    DATABASE        shift and go to state 16
+    TABLE           shift and go to state 17
+
+
+state 11
+
+    (11) use_db_statement -> USE . ID SEMICOLON
+
+    ID              shift and go to state 18
+
+
+state 12
+
+    (25) insert_statement -> INSERT . INTO ID LPAREN id_list RPAREN VALUES LPAREN value_list RPAREN SEMICOLON
+
+    INTO            shift and go to state 19
+
+
+state 13
+
+    (26) update_statement -> UPDATE . ID SET assignment_list WHERE condition SEMICOLON
+
+    ID              shift and go to state 20
+
+
+state 14
+
+    (27) delete_statement -> DELETE . FROM ID WHERE condition SEMICOLON
+
+    FROM            shift and go to state 21
+
+
+state 15
+
+    (24) select_statement -> SELECT . ASTERISK FROM ID SEMICOLON
+
+    ASTERISK        shift and go to state 22
+
+
+state 16
+
+    (9) create_db_statement -> CREATE DATABASE . IF NOT EXISTS ID SEMICOLON
+    (10) create_db_statement -> CREATE DATABASE . ID SEMICOLON
+
+    IF              shift and go to state 23
+    ID              shift and go to state 24
+
+
+state 17
+
+    (12) create_table_statement -> CREATE TABLE . IF NOT EXISTS ID LPAREN column_definitions RPAREN SEMICOLON
+    (13) create_table_statement -> CREATE TABLE . ID LPAREN column_definitions RPAREN SEMICOLON
+
+    IF              shift and go to state 25
+    ID              shift and go to state 26
+
+
+state 18
+
+    (11) use_db_statement -> USE ID . SEMICOLON
+
+    SEMICOLON       shift and go to state 27
+
+
+state 19
+
+    (25) insert_statement -> INSERT INTO . ID LPAREN id_list RPAREN VALUES LPAREN value_list RPAREN SEMICOLON
+
+    ID              shift and go to state 28
+
+
+state 20
+
+    (26) update_statement -> UPDATE ID . SET assignment_list WHERE condition SEMICOLON
+
+    SET             shift and go to state 29
+
+
+state 21
+
+    (27) delete_statement -> DELETE FROM . ID WHERE condition SEMICOLON
+
+    ID              shift and go to state 30
+
+
+state 22
+
+    (24) select_statement -> SELECT ASTERISK . FROM ID SEMICOLON
+
+    FROM            shift and go to state 31
+
+
+state 23
+
+    (9) create_db_statement -> CREATE DATABASE IF . NOT EXISTS ID SEMICOLON
+
+    NOT             shift and go to state 32
+
+
+state 24
+
+    (10) create_db_statement -> CREATE DATABASE ID . SEMICOLON
+
+    SEMICOLON       shift and go to state 33
+
+
+state 25
+
+    (12) create_table_statement -> CREATE TABLE IF . NOT EXISTS ID LPAREN column_definitions RPAREN SEMICOLON
+
+    NOT             shift and go to state 34
+
+
+state 26
+
+    (13) create_table_statement -> CREATE TABLE ID . LPAREN column_definitions RPAREN SEMICOLON
+
+    LPAREN          shift and go to state 35
+
+
+state 27
+
+    (11) use_db_statement -> USE ID SEMICOLON .
+
+    $end            reduce using rule 11 (use_db_statement -> USE ID SEMICOLON .)
+
+
+state 28
+
+    (25) insert_statement -> INSERT INTO ID . LPAREN id_list RPAREN VALUES LPAREN value_list RPAREN SEMICOLON
+
+    LPAREN          shift and go to state 36
+
+
+state 29
+
+    (26) update_statement -> UPDATE ID SET . assignment_list WHERE condition SEMICOLON
+    (34) assignment_list -> . assignment
+    (35) assignment_list -> . assignment_list COMMA assignment
+    (36) assignment -> . ID = value
+
+    ID              shift and go to state 37
+
+    assignment_list                shift and go to state 38
+    assignment                     shift and go to state 39
+
+state 30
+
+    (27) delete_statement -> DELETE FROM ID . WHERE condition SEMICOLON
+
+    WHERE           shift and go to state 40
+
+
+state 31
+
+    (24) select_statement -> SELECT ASTERISK FROM . ID SEMICOLON
+
+    ID              shift and go to state 41
+
+
+state 32
+
+    (9) create_db_statement -> CREATE DATABASE IF NOT . EXISTS ID SEMICOLON
+
+    EXISTS          shift and go to state 42
+
+
+state 33
+
+    (10) create_db_statement -> CREATE DATABASE ID SEMICOLON .
+
+    $end            reduce using rule 10 (create_db_statement -> CREATE DATABASE ID SEMICOLON .)
+
+
+state 34
+
+    (12) create_table_statement -> CREATE TABLE IF NOT . EXISTS ID LPAREN column_definitions RPAREN SEMICOLON
+
+    EXISTS          shift and go to state 43
+
+
+state 35
+
+    (13) create_table_statement -> CREATE TABLE ID LPAREN . column_definitions RPAREN SEMICOLON
+    (14) column_definitions -> . column_definition
+    (15) column_definitions -> . column_definitions COMMA column_definition
+    (16) column_definition -> . ID data_type column_constraints
+
+    ID              shift and go to state 44
+
+    column_definitions             shift and go to state 45
+    column_definition              shift and go to state 46
+
+state 36
+
+    (25) insert_statement -> INSERT INTO ID LPAREN . id_list RPAREN VALUES LPAREN value_list RPAREN SEMICOLON
+    (28) id_list -> . ID
+    (29) id_list -> . id_list COMMA ID
+
+    ID              shift and go to state 47
+
+    id_list                        shift and go to state 48
+
+state 37
+
+    (36) assignment -> ID . = value
+
+    =               shift and go to state 49
+
+
+state 38
+
+    (26) update_statement -> UPDATE ID SET assignment_list . WHERE condition SEMICOLON
+    (35) assignment_list -> assignment_list . COMMA assignment
+
+    WHERE           shift and go to state 50
+    COMMA           shift and go to state 51
+
+
+state 39
+
+    (34) assignment_list -> assignment .
+
+    WHERE           reduce using rule 34 (assignment_list -> assignment .)
+    COMMA           reduce using rule 34 (assignment_list -> assignment .)
+
+
+state 40
+
+    (27) delete_statement -> DELETE FROM ID WHERE . condition SEMICOLON
+    (37) condition -> . ID = value
+    (38) condition -> . condition AND_KEYWORD condition
+    (39) condition -> . condition OR_KEYWORD condition
+
+    ID              shift and go to state 52
+
+    condition                      shift and go to state 53
+
+state 41
+
+    (24) select_statement -> SELECT ASTERISK FROM ID . SEMICOLON
+
+    SEMICOLON       shift and go to state 54
+
+
+state 42
+
+    (9) create_db_statement -> CREATE DATABASE IF NOT EXISTS . ID SEMICOLON
+
+    ID              shift and go to state 55
+
+
+state 43
+
+    (12) create_table_statement -> CREATE TABLE IF NOT EXISTS . ID LPAREN column_definitions RPAREN SEMICOLON
+
+    ID              shift and go to state 56
+
+
+state 44
+
+    (16) column_definition -> ID . data_type column_constraints
+    (17) data_type -> . INT
+    (18) data_type -> . VARCHAR LPAREN NUMBER RPAREN
+    (19) data_type -> . DECIMAL LPAREN NUMBER COMMA NUMBER RPAREN
+
+    INT             shift and go to state 58
+    VARCHAR         shift and go to state 59
+    DECIMAL         shift and go to state 60
+
+    data_type                      shift and go to state 57
+
+state 45
+
+    (13) create_table_statement -> CREATE TABLE ID LPAREN column_definitions . RPAREN SEMICOLON
+    (15) column_definitions -> column_definitions . COMMA column_definition
+
+    RPAREN          shift and go to state 61
+    COMMA           shift and go to state 62
+
+
+state 46
+
+    (14) column_definitions -> column_definition .
+
+    RPAREN          reduce using rule 14 (column_definitions -> column_definition .)
+    COMMA           reduce using rule 14 (column_definitions -> column_definition .)
+
+
+state 47
+
+    (28) id_list -> ID .
+
+    RPAREN          reduce using rule 28 (id_list -> ID .)
+    COMMA           reduce using rule 28 (id_list -> ID .)
+
+
+state 48
+
+    (25) insert_statement -> INSERT INTO ID LPAREN id_list . RPAREN VALUES LPAREN value_list RPAREN SEMICOLON
+    (29) id_list -> id_list . COMMA ID
+
+    RPAREN          shift and go to state 63
+    COMMA           shift and go to state 64
+
+
+state 49
+
+    (36) assignment -> ID = . value
+    (32) value -> . NUMBER
+    (33) value -> . STRING
+
+    NUMBER          shift and go to state 66
+    STRING          shift and go to state 67
+
+    value                          shift and go to state 65
+
+state 50
+
+    (26) update_statement -> UPDATE ID SET assignment_list WHERE . condition SEMICOLON
+    (37) condition -> . ID = value
+    (38) condition -> . condition AND_KEYWORD condition
+    (39) condition -> . condition OR_KEYWORD condition
+
+    ID              shift and go to state 52
+
+    condition                      shift and go to state 68
+
+state 51
+
+    (35) assignment_list -> assignment_list COMMA . assignment
+    (36) assignment -> . ID = value
+
+    ID              shift and go to state 37
+
+    assignment                     shift and go to state 69
+
+state 52
+
+    (37) condition -> ID . = value
+
+    =               shift and go to state 70
+
+
+state 53
+
+    (27) delete_statement -> DELETE FROM ID WHERE condition . SEMICOLON
+    (38) condition -> condition . AND_KEYWORD condition
+    (39) condition -> condition . OR_KEYWORD condition
+
+    SEMICOLON       shift and go to state 71
+    AND_KEYWORD     shift and go to state 72
+    OR_KEYWORD      shift and go to state 73
+
+
+state 54
+
+    (24) select_statement -> SELECT ASTERISK FROM ID SEMICOLON .
+
+    $end            reduce using rule 24 (select_statement -> SELECT ASTERISK FROM ID SEMICOLON .)
+
+
+state 55
+
+    (9) create_db_statement -> CREATE DATABASE IF NOT EXISTS ID . SEMICOLON
+
+    SEMICOLON       shift and go to state 74
+
+
+state 56
+
+    (12) create_table_statement -> CREATE TABLE IF NOT EXISTS ID . LPAREN column_definitions RPAREN SEMICOLON
+
+    LPAREN          shift and go to state 75
+
+
+state 57
+
+    (16) column_definition -> ID data_type . column_constraints
+    (20) column_constraints -> . AUTO_INCREMENT
+    (21) column_constraints -> . PRIMARY_KEY
+    (22) column_constraints -> . FOREIGN_KEY LPAREN ID RPAREN REFERENCES ID LPAREN ID RPAREN
+
+    AUTO_INCREMENT  shift and go to state 77
+    PRIMARY_KEY     shift and go to state 78
+    FOREIGN_KEY     shift and go to state 79
+
+    column_constraints             shift and go to state 76
+
+state 58
+
+    (17) data_type -> INT .
+
+    AUTO_INCREMENT  reduce using rule 17 (data_type -> INT .)
+    PRIMARY_KEY     reduce using rule 17 (data_type -> INT .)
+    FOREIGN_KEY     reduce using rule 17 (data_type -> INT .)
+
+
+state 59
+
+    (18) data_type -> VARCHAR . LPAREN NUMBER RPAREN
+
+    LPAREN          shift and go to state 80
+
+
+state 60
+
+    (19) data_type -> DECIMAL . LPAREN NUMBER COMMA NUMBER RPAREN
+
+    LPAREN          shift and go to state 81
+
+
+state 61
+
+    (13) create_table_statement -> CREATE TABLE ID LPAREN column_definitions RPAREN . SEMICOLON
+
+    SEMICOLON       shift and go to state 82
+
+
+state 62
+
+    (15) column_definitions -> column_definitions COMMA . column_definition
+    (16) column_definition -> . ID data_type column_constraints
+
+    ID              shift and go to state 44
+
+    column_definition              shift and go to state 83
+
+state 63
+
+    (25) insert_statement -> INSERT INTO ID LPAREN id_list RPAREN . VALUES LPAREN value_list RPAREN SEMICOLON
+
+    VALUES          shift and go to state 84
+
+
+state 64
+
+    (29) id_list -> id_list COMMA . ID
+
+    ID              shift and go to state 85
+
+
+state 65
+
+    (36) assignment -> ID = value .
+
+    WHERE           reduce using rule 36 (assignment -> ID = value .)
+    COMMA           reduce using rule 36 (assignment -> ID = value .)
+
+
+state 66
+
+    (32) value -> NUMBER .
+
+    WHERE           reduce using rule 32 (value -> NUMBER .)
+    COMMA           reduce using rule 32 (value -> NUMBER .)
+    SEMICOLON       reduce using rule 32 (value -> NUMBER .)
+    AND_KEYWORD     reduce using rule 32 (value -> NUMBER .)
+    OR_KEYWORD      reduce using rule 32 (value -> NUMBER .)
+    RPAREN          reduce using rule 32 (value -> NUMBER .)
+
+
+state 67
+
+    (33) value -> STRING .
+
+    WHERE           reduce using rule 33 (value -> STRING .)
+    COMMA           reduce using rule 33 (value -> STRING .)
+    SEMICOLON       reduce using rule 33 (value -> STRING .)
+    AND_KEYWORD     reduce using rule 33 (value -> STRING .)
+    OR_KEYWORD      reduce using rule 33 (value -> STRING .)
+    RPAREN          reduce using rule 33 (value -> STRING .)
+
+
+state 68
+
+    (26) update_statement -> UPDATE ID SET assignment_list WHERE condition . SEMICOLON
+    (38) condition -> condition . AND_KEYWORD condition
+    (39) condition -> condition . OR_KEYWORD condition
+
+    SEMICOLON       shift and go to state 86
+    AND_KEYWORD     shift and go to state 72
+    OR_KEYWORD      shift and go to state 73
+
+
+state 69
+
+    (35) assignment_list -> assignment_list COMMA assignment .
+
+    WHERE           reduce using rule 35 (assignment_list -> assignment_list COMMA assignment .)
+    COMMA           reduce using rule 35 (assignment_list -> assignment_list COMMA assignment .)
+
+
+state 70
+
+    (37) condition -> ID = . value
+    (32) value -> . NUMBER
+    (33) value -> . STRING
+
+    NUMBER          shift and go to state 66
+    STRING          shift and go to state 67
+
+    value                          shift and go to state 87
+
+state 71
+
+    (27) delete_statement -> DELETE FROM ID WHERE condition SEMICOLON .
+
+    $end            reduce using rule 27 (delete_statement -> DELETE FROM ID WHERE condition SEMICOLON .)
+
+
+state 72
+
+    (38) condition -> condition AND_KEYWORD . condition
+    (37) condition -> . ID = value
+    (38) condition -> . condition AND_KEYWORD condition
+    (39) condition -> . condition OR_KEYWORD condition
+
+    ID              shift and go to state 52
+
+    condition                      shift and go to state 88
+
+state 73
+
+    (39) condition -> condition OR_KEYWORD . condition
+    (37) condition -> . ID = value
+    (38) condition -> . condition AND_KEYWORD condition
+    (39) condition -> . condition OR_KEYWORD condition
+
+    ID              shift and go to state 52
+
+    condition                      shift and go to state 89
+
+state 74
+
+    (9) create_db_statement -> CREATE DATABASE IF NOT EXISTS ID SEMICOLON .
+
+    $end            reduce using rule 9 (create_db_statement -> CREATE DATABASE IF NOT EXISTS ID SEMICOLON .)
+
+
+state 75
+
+    (12) create_table_statement -> CREATE TABLE IF NOT EXISTS ID LPAREN . column_definitions RPAREN SEMICOLON
+    (14) column_definitions -> . column_definition
+    (15) column_definitions -> . column_definitions COMMA column_definition
+    (16) column_definition -> . ID data_type column_constraints
+
+    ID              shift and go to state 44
+
+    column_definitions             shift and go to state 90
+    column_definition              shift and go to state 46
+
+state 76
+
+    (16) column_definition -> ID data_type column_constraints .
+
+    RPAREN          reduce using rule 16 (column_definition -> ID data_type column_constraints .)
+    COMMA           reduce using rule 16 (column_definition -> ID data_type column_constraints .)
+
+
+state 77
+
+    (20) column_constraints -> AUTO_INCREMENT .
+
+    RPAREN          reduce using rule 20 (column_constraints -> AUTO_INCREMENT .)
+    COMMA           reduce using rule 20 (column_constraints -> AUTO_INCREMENT .)
+
+
+state 78
+
+    (21) column_constraints -> PRIMARY_KEY .
+
+    RPAREN          reduce using rule 21 (column_constraints -> PRIMARY_KEY .)
+    COMMA           reduce using rule 21 (column_constraints -> PRIMARY_KEY .)
+
+
+state 79
+
+    (22) column_constraints -> FOREIGN_KEY . LPAREN ID RPAREN REFERENCES ID LPAREN ID RPAREN
+
+    LPAREN          shift and go to state 91
+
+
+state 80
+
+    (18) data_type -> VARCHAR LPAREN . NUMBER RPAREN
+
+    NUMBER          shift and go to state 92
+
+
+state 81
+
+    (19) data_type -> DECIMAL LPAREN . NUMBER COMMA NUMBER RPAREN
+
+    NUMBER          shift and go to state 93
+
+
+state 82
+
+    (13) create_table_statement -> CREATE TABLE ID LPAREN column_definitions RPAREN SEMICOLON .
+
+    $end            reduce using rule 13 (create_table_statement -> CREATE TABLE ID LPAREN column_definitions RPAREN SEMICOLON .)
+
+
+state 83
+
+    (15) column_definitions -> column_definitions COMMA column_definition .
+
+    RPAREN          reduce using rule 15 (column_definitions -> column_definitions COMMA column_definition .)
+    COMMA           reduce using rule 15 (column_definitions -> column_definitions COMMA column_definition .)
+
+
+state 84
+
+    (25) insert_statement -> INSERT INTO ID LPAREN id_list RPAREN VALUES . LPAREN value_list RPAREN SEMICOLON
+
+    LPAREN          shift and go to state 94
+
+
+state 85
+
+    (29) id_list -> id_list COMMA ID .
+
+    RPAREN          reduce using rule 29 (id_list -> id_list COMMA ID .)
+    COMMA           reduce using rule 29 (id_list -> id_list COMMA ID .)
+
+
+state 86
+
+    (26) update_statement -> UPDATE ID SET assignment_list WHERE condition SEMICOLON .
+
+    $end            reduce using rule 26 (update_statement -> UPDATE ID SET assignment_list WHERE condition SEMICOLON .)
+
+
+state 87
+
+    (37) condition -> ID = value .
+
+    SEMICOLON       reduce using rule 37 (condition -> ID = value .)
+    AND_KEYWORD     reduce using rule 37 (condition -> ID = value .)
+    OR_KEYWORD      reduce using rule 37 (condition -> ID = value .)
+
+
+state 88
+
+    (38) condition -> condition AND_KEYWORD condition .
+    (38) condition -> condition . AND_KEYWORD condition
+    (39) condition -> condition . OR_KEYWORD condition
+
+  ! shift/reduce conflict for AND_KEYWORD resolved as shift
+  ! shift/reduce conflict for OR_KEYWORD resolved as shift
+    SEMICOLON       reduce using rule 38 (condition -> condition AND_KEYWORD condition .)
+    AND_KEYWORD     shift and go to state 72
+    OR_KEYWORD      shift and go to state 73
+
+  ! AND_KEYWORD     [ reduce using rule 38 (condition -> condition AND_KEYWORD condition .) ]
+  ! OR_KEYWORD      [ reduce using rule 38 (condition -> condition AND_KEYWORD condition .) ]
+
+
+state 89
+
+    (39) condition -> condition OR_KEYWORD condition .
+    (38) condition -> condition . AND_KEYWORD condition
+    (39) condition -> condition . OR_KEYWORD condition
+
+  ! shift/reduce conflict for AND_KEYWORD resolved as shift
+  ! shift/reduce conflict for OR_KEYWORD resolved as shift
+    SEMICOLON       reduce using rule 39 (condition -> condition OR_KEYWORD condition .)
+    AND_KEYWORD     shift and go to state 72
+    OR_KEYWORD      shift and go to state 73
+
+  ! AND_KEYWORD     [ reduce using rule 39 (condition -> condition OR_KEYWORD condition .) ]
+  ! OR_KEYWORD      [ reduce using rule 39 (condition -> condition OR_KEYWORD condition .) ]
+
+
+state 90
+
+    (12) create_table_statement -> CREATE TABLE IF NOT EXISTS ID LPAREN column_definitions . RPAREN SEMICOLON
+    (15) column_definitions -> column_definitions . COMMA column_definition
+
+    RPAREN          shift and go to state 95
+    COMMA           shift and go to state 62
+
+
+state 91
+
+    (22) column_constraints -> FOREIGN_KEY LPAREN . ID RPAREN REFERENCES ID LPAREN ID RPAREN
+
+    ID              shift and go to state 96
+
+
+state 92
+
+    (18) data_type -> VARCHAR LPAREN NUMBER . RPAREN
+
+    RPAREN          shift and go to state 97
+
+
+state 93
+
+    (19) data_type -> DECIMAL LPAREN NUMBER . COMMA NUMBER RPAREN
+
+    COMMA           shift and go to state 98
+
+
+state 94
+
+    (25) insert_statement -> INSERT INTO ID LPAREN id_list RPAREN VALUES LPAREN . value_list RPAREN SEMICOLON
+    (30) value_list -> . value
+    (31) value_list -> . value_list COMMA value
+    (32) value -> . NUMBER
+    (33) value -> . STRING
+
+    NUMBER          shift and go to state 66
+    STRING          shift and go to state 67
+
+    value_list                     shift and go to state 99
+    value                          shift and go to state 100
+
+state 95
+
+    (12) create_table_statement -> CREATE TABLE IF NOT EXISTS ID LPAREN column_definitions RPAREN . SEMICOLON
+
+    SEMICOLON       shift and go to state 101
+
+
+state 96
+
+    (22) column_constraints -> FOREIGN_KEY LPAREN ID . RPAREN REFERENCES ID LPAREN ID RPAREN
+
+    RPAREN          shift and go to state 102
+
+
+state 97
+
+    (18) data_type -> VARCHAR LPAREN NUMBER RPAREN .
+
+    AUTO_INCREMENT  reduce using rule 18 (data_type -> VARCHAR LPAREN NUMBER RPAREN .)
+    PRIMARY_KEY     reduce using rule 18 (data_type -> VARCHAR LPAREN NUMBER RPAREN .)
+    FOREIGN_KEY     reduce using rule 18 (data_type -> VARCHAR LPAREN NUMBER RPAREN .)
+
+
+state 98
+
+    (19) data_type -> DECIMAL LPAREN NUMBER COMMA . NUMBER RPAREN
+
+    NUMBER          shift and go to state 103
+
+
+state 99
+
+    (25) insert_statement -> INSERT INTO ID LPAREN id_list RPAREN VALUES LPAREN value_list . RPAREN SEMICOLON
+    (31) value_list -> value_list . COMMA value
+
+    RPAREN          shift and go to state 104
+    COMMA           shift and go to state 105
+
+
+state 100
+
+    (30) value_list -> value .
+
+    RPAREN          reduce using rule 30 (value_list -> value .)
+    COMMA           reduce using rule 30 (value_list -> value .)
+
+
+state 101
+
+    (12) create_table_statement -> CREATE TABLE IF NOT EXISTS ID LPAREN column_definitions RPAREN SEMICOLON .
+
+    $end            reduce using rule 12 (create_table_statement -> CREATE TABLE IF NOT EXISTS ID LPAREN column_definitions RPAREN SEMICOLON .)
+
+
+state 102
+
+    (22) column_constraints -> FOREIGN_KEY LPAREN ID RPAREN . REFERENCES ID LPAREN ID RPAREN
+
+    REFERENCES      shift and go to state 106
+
+
+state 103
+
+    (19) data_type -> DECIMAL LPAREN NUMBER COMMA NUMBER . RPAREN
+
+    RPAREN          shift and go to state 107
+
+
+state 104
+
+    (25) insert_statement -> INSERT INTO ID LPAREN id_list RPAREN VALUES LPAREN value_list RPAREN . SEMICOLON
+
+    SEMICOLON       shift and go to state 108
+
+
+state 105
+
+    (31) value_list -> value_list COMMA . value
+    (32) value -> . NUMBER
+    (33) value -> . STRING
+
+    NUMBER          shift and go to state 66
+    STRING          shift and go to state 67
+
+    value                          shift and go to state 109
+
+state 106
+
+    (22) column_constraints -> FOREIGN_KEY LPAREN ID RPAREN REFERENCES . ID LPAREN ID RPAREN
+
+    ID              shift and go to state 110
+
+
+state 107
+
+    (19) data_type -> DECIMAL LPAREN NUMBER COMMA NUMBER RPAREN .
+
+    AUTO_INCREMENT  reduce using rule 19 (data_type -> DECIMAL LPAREN NUMBER COMMA NUMBER RPAREN .)
+    PRIMARY_KEY     reduce using rule 19 (data_type -> DECIMAL LPAREN NUMBER COMMA NUMBER RPAREN .)
+    FOREIGN_KEY     reduce using rule 19 (data_type -> DECIMAL LPAREN NUMBER COMMA NUMBER RPAREN .)
+
+
+state 108
+
+    (25) insert_statement -> INSERT INTO ID LPAREN id_list RPAREN VALUES LPAREN value_list RPAREN SEMICOLON .
+
+    $end            reduce using rule 25 (insert_statement -> INSERT INTO ID LPAREN id_list RPAREN VALUES LPAREN value_list RPAREN SEMICOLON .)
+
+
+state 109
+
+    (31) value_list -> value_list COMMA value .
+
+    RPAREN          reduce using rule 31 (value_list -> value_list COMMA value .)
+    COMMA           reduce using rule 31 (value_list -> value_list COMMA value .)
+
+
+state 110
+
+    (22) column_constraints -> FOREIGN_KEY LPAREN ID RPAREN REFERENCES ID . LPAREN ID RPAREN
+
+    LPAREN          shift and go to state 111
+
+
+state 111
+
+    (22) column_constraints -> FOREIGN_KEY LPAREN ID RPAREN REFERENCES ID LPAREN . ID RPAREN
+
+    ID              shift and go to state 112
+
+
+state 112
+
+    (22) column_constraints -> FOREIGN_KEY LPAREN ID RPAREN REFERENCES ID LPAREN ID . RPAREN
+
+    RPAREN          shift and go to state 113
+
+
+state 113
+
+    (22) column_constraints -> FOREIGN_KEY LPAREN ID RPAREN REFERENCES ID LPAREN ID RPAREN .
+
+    RPAREN          reduce using rule 22 (column_constraints -> FOREIGN_KEY LPAREN ID RPAREN REFERENCES ID LPAREN ID RPAREN .)
+    COMMA           reduce using rule 22 (column_constraints -> FOREIGN_KEY LPAREN ID RPAREN REFERENCES ID LPAREN ID RPAREN .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for AND_KEYWORD in state 88 resolved as shift
+WARNING: shift/reduce conflict for OR_KEYWORD in state 88 resolved as shift
+WARNING: shift/reduce conflict for AND_KEYWORD in state 89 resolved as shift
+WARNING: shift/reduce conflict for OR_KEYWORD in state 89 resolved as shift
